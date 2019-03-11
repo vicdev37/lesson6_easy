@@ -80,12 +80,25 @@ Array.from(expensesItem).forEach((el, index) => {
 		} else {
 			expensesBtn.removeAttribute('disabled');
 		}
+	})
+});
 
-		// if (el.value.length !== 0) {
-		// 	expensesBtn.removeAttribute('disabled');
-		// } else {
-		// 	expensesBtn.setAttribute("disabled", "disabled");
-		// }
+let object2 = {
+	0: '',
+	1: '',
+	2: ''
+}
+
+
+
+Array.from(optionalExpensesItem).forEach((el, index) => {
+	el.addEventListener('input', (evt) => {
+		object2[index] = evt.target.value
+		if (object2[0] || object2[1] || object2[2]) {
+			optionalExpensesBtn.removeAttribute('disabled');
+		} else {
+			optionalExpensesBtn.setAttribute("disabled", "disabled");
+		}
 	})
 });
 
@@ -104,27 +117,11 @@ optionalExpensesBtn.addEventListener('click', function() {
 		}
 		appData.optionalExpenses[i] = opt;
 		optionalExpensesValue.textContent += appData.optionalExpenses[i] + ' ';
-
-		// 	b = prompt("Во сколько обойдется ? ", '');
-		// if ((typeof (a)) === 'string' && (typeof (a)) != null && (typeof (b)) != null && a != '' && b != '' && a.length < 50) {
-		// 	appData.optionalExpenses[a] = b;
-		// } else {
-		// 	i = i - 1;
-		// }
+		
 	}
 
 
 });
-
-// Array.from(optionalExpensesItem).forEach((el, index) => {
-// 	el.addEventListener('input', () => {
-// 		if (el.value.length !== 0) {
-// 			optionalExpensesBtn.removeAttribute('disabled');
-// 		} else {
-// 			optionalExpensesBtn.setAttribute("disabled", "disabled");
-// 		}
-// 	})
-// });	
 
 countBtn.addEventListener('click', function() {
 	if (appData.budget != undefined) {
